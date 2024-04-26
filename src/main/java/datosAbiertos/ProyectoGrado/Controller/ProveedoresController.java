@@ -2,6 +2,7 @@ package datosAbiertos.ProyectoGrado.Controller;
 
 import datosAbiertos.ProyectoGrado.Dto.DepartamentoResponse;
 import datosAbiertos.ProyectoGrado.Dto.DepartamentoResponseDto;
+import datosAbiertos.ProyectoGrado.Dto.NitResponse;
 import datosAbiertos.ProyectoGrado.Service.IProveedoresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -23,5 +24,12 @@ public class ProveedoresController {
         DepartamentoResponse response = iProveedoresService.findByDepartamento(departamento);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/nit/{nit}")
+    public ResponseEntity<NitResponse> findByNit(@PathVariable String nit){
+        NitResponse response = iProveedoresService.findByNit(nit);
+        return ResponseEntity.ok(response);
+    }
+
 
 }
