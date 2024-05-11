@@ -13,7 +13,8 @@ import java.util.List;
 
 public interface ProveedoresRepository extends JpaRepository<Proveedores, Long> {
 
-    @Query(value = "SELECT new datosAbiertos.ProyectoGrado.Dto.DepartamentoResponseDto(p.nombre, p.codigo, p.municipio) FROM Proveedores p WHERE p.departamento = :departamento")
+    @Query(value = "SELECT new datosAbiertos.ProyectoGrado.Dto.DepartamentoResponseDto(p.nombre, p.codigo, p.municipio) " +
+            "FROM Proveedores p WHERE p.departamento = :departamento")
     List<DepartamentoResponseDto> findByDepartamento(@Param("departamento") String departamento);
 
     @Query(value = "SELECT * FROM proveedores WHERE nit = :nit", nativeQuery = true)

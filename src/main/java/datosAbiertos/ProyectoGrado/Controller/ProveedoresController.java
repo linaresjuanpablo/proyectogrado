@@ -4,20 +4,21 @@ import datosAbiertos.ProyectoGrado.Dto.DepartamentoResponse;
 import datosAbiertos.ProyectoGrado.Dto.DepartamentoResponseDto;
 import datosAbiertos.ProyectoGrado.Dto.NitResponse;
 import datosAbiertos.ProyectoGrado.Service.IProveedoresService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/data")
+@CrossOrigin(origins ="*", methods = {RequestMethod.GET,RequestMethod.POST})
 
 public class ProveedoresController {
     @Autowired
     private IProveedoresService iProveedoresService;
+    @ApiOperation(value = "Buscar por departamento")
+
 
     @GetMapping("/departamento/{departamento}")
     public ResponseEntity<DepartamentoResponse> findByDepartamento(@PathVariable String departamento){

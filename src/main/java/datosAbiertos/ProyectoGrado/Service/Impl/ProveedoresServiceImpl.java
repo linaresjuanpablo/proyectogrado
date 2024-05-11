@@ -4,6 +4,7 @@ import datosAbiertos.ProyectoGrado.Dto.DepartamentoResponse;
 import datosAbiertos.ProyectoGrado.Dto.DepartamentoResponseDto;
 import datosAbiertos.ProyectoGrado.Dto.NitResponse;
 import datosAbiertos.ProyectoGrado.Dto.NitResponseDto;
+import datosAbiertos.ProyectoGrado.Message.Message;
 import datosAbiertos.ProyectoGrado.Model.Proveedores;
 import datosAbiertos.ProyectoGrado.Repository.ProveedoresRepository;
 import datosAbiertos.ProyectoGrado.Service.IProveedoresService;
@@ -28,8 +29,9 @@ public class ProveedoresServiceImpl implements IProveedoresService {
         if (list == null || list.isEmpty()){
             System.out.println("no hay datos");
         }
-        DepartamentoResponseDto responseDto = new DepartamentoResponseDto("","","");
+
         for (DepartamentoResponseDto dto: list){
+            DepartamentoResponseDto responseDto = new DepartamentoResponseDto("","","");
             responseDto.setNombre(dto.getNombre());
             responseDto.setCodigo(dto.getCodigo());
             responseDto.setMunicipio(dto.getMunicipio());
@@ -46,7 +48,8 @@ public class ProveedoresServiceImpl implements IProveedoresService {
         List<NitResponseDto> nitResponseDtos = new ArrayList<>();
         List<Proveedores> list = proveedoresRepository.findByNit(nit);
         if (list == null || list.isEmpty()){
-            System.out.println("no hay datos");
+            //System.out.println("no hay datos");
+            throw new Message("La empresa no esta registrada");
         }
         NitResponseDto responseDto = new NitResponseDto("","","","","");
         for (Proveedores dto: list){
