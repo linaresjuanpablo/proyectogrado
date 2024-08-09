@@ -24,9 +24,17 @@ public class FacturasController {
         return ResponseEntity.ok(response);
     }
 
-   /* @GetMapping("facturas/{mes}")
-    public ResponseEntity<FacturasResponse> findByFacturasMes(@PathVariable String mes){
-        FacturasResponse response = iFacturasService.findByFacturasMes(mes);
+   @GetMapping("facturas/{ano}/{mes}")
+    public ResponseEntity<FacturasResponse> findByFacturasMes(@PathVariable String ano, @PathVariable String mes){
+        FacturasResponse response = iFacturasService.findByFacturasMes(ano, mes);
         return ResponseEntity.ok(response);
-    }*/
+    }
+
+    @GetMapping("facturas/{ano}")
+    public ResponseEntity<FacturasResponse> findByFacturasMes(@PathVariable String ano){
+        FacturasResponse response = iFacturasService.findByFacturasAno(ano);
+        return ResponseEntity.ok(response);
+    }
+
+
 }

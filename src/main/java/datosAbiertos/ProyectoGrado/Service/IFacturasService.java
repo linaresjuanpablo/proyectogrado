@@ -6,5 +6,7 @@ public interface IFacturasService {
 
     FacturasResponse findByFacturasDia(String ano, String mes, String dia);
 
-    FacturasResponse findByFacturasMes(String mes);
+    FacturasResponse findByFacturasMes(String ano, String mes);
+
+    FacturasResponse findByFacturasAno(String ano);
 }
