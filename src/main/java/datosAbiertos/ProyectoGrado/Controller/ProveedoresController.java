@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/data")
+@RequestMapping(value = "/api/data/proveedor")
 
 
 public class ProveedoresController {

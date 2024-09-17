@@ -44,13 +44,18 @@ public class ProveedoresServiceImpl implements IProveedoresService {
 
     @Override
     public NitResponse findByNit(String nit) {
-        NitResponse nitResponse = new NitResponse();
+        NitResponse nitResponse = new NitResponse("");
         List<NitResponseDto> nitResponseDtos = new ArrayList<>();
         List<Proveedores> list = proveedoresRepository.findByNit(nit);
         if (list == null || list.isEmpty()){
-            //System.out.println("no hay datos");
-            throw new Message("La empresa no esta registrada");
+            //System.out.println(Message.VACIOEMPRESA + "La empresa no esta registrada");
+            //throw new IllegalArgumentException("La empresa PROVEEDORA no se encuentra registrada");
+            //return Message.VACIOEMPRESA;
+            nitResponse.setMensaje(Message.VACIOEMPRESAPROVEEDORA);
+
+            return nitResponse;
         }
+
         NitResponseDto responseDto = new NitResponseDto("","","","","");
         for (Proveedores dto: list){
             responseDto.setNombre(dto.getNombre());

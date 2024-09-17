@@ -4,6 +4,7 @@ import datosAbiertos.ProyectoGrado.Dto.NitResponse;
 import datosAbiertos.ProyectoGrado.Dto.NitResponseDto;
 import datosAbiertos.ProyectoGrado.Dto.ProponenteResponse;
 import datosAbiertos.ProyectoGrado.Dto.ProponenteResponseDto;
+import datosAbiertos.ProyectoGrado.Message.Message;
 import datosAbiertos.ProyectoGrado.Model.Proponentes;
 import datosAbiertos.ProyectoGrado.Repository.ProponentesRepository;
 import datosAbiertos.ProyectoGrado.Service.IProponentesService;
@@ -23,11 +24,12 @@ public class ProponenteServiceImpl implements IProponentesService {
 
     @Override
     public ProponenteResponse findByNitPro(String nitPro) {
-        ProponenteResponse proponenteResponse = new ProponenteResponse();
+        ProponenteResponse proponenteResponse = new ProponenteResponse("");
         List<ProponenteResponseDto> proponenteResponseDtos = new ArrayList<>();
         List<Proponentes> list = proponentesRepository.findByNitPro(nitPro);
         if (list == null || list.isEmpty()){
-            System.out.println("no hay datos");
+            //System.out.println("no hay datos");
+            proponenteResponse.setMensaje(Message.PROPONENTEVACIO);
         }
 
         for (Proponentes dto: list){

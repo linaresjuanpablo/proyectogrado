@@ -9,5 +9,12 @@ import java.util.List;
 @Getter
 
 public class NitResponse {
+
+    private String mensaje;
     List<NitResponseDto>nitResponseDtos;
+
+    public NitResponse(String mensaje){
+
+        this.mensaje = mensaje;
+    }
 }
